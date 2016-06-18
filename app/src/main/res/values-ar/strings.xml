@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
+    <string name="app_name">Stock Hawk</string>
+    <string name="action_change_units">وحدات التغيير </string>
+    <string name="action_settings">إعدادات </string>
+    <string name="add_widget">إضافة القطعة </string>
+    <string name="appwidget_text">أسعار الأسهم </string>
+    <string name="chart_title_stock_price">سعر السهم </string>
+    <string name="content_test">بحث عن الأوراق المالية رمز </string>
+    <string name="input_hint">FB </string>
+    <string name="last_updated_on">آخر تحديث في : </string>
+    <string name="network_toast">اه اوه! هذا التطبيق يتطلب اتصال بالإنترنت </string>
+    <string name="no_internet_stock_quotes">لا أسعار الأسهم المتاحة. يرجى بدوره على اتصال بالإنترنت. </string>
+    <string name="no_stock_quotes">ونقلت متاح لا يوجد مخزون . </string>
+    <string name="symbol_search">رمز البحث </string>
+    <string name="content_desc_add_quote">أضف اقتباس </string>
+    <string name="content_desc_quote">اقتبس : <xliff:g id="quote">%1$s</xliff:g> bid : <xliff:g id="quote">%2$s</xliff:g></string>
+
+
+</resources>
