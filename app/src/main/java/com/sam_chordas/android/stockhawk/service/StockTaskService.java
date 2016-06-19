@@ -12,6 +12,7 @@ import android.util.Log;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
+import com.sam_chordas.android.stockhawk.constants.AppConstants;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
@@ -88,7 +89,7 @@ public class StockTaskService extends GcmTaskService {
                 initQueryCursor.moveToFirst();
                 for (int i = 0; i < initQueryCursor.getCount(); i++) {
                     mStoredSymbols.append("\"" +
-                            initQueryCursor.getString(initQueryCursor.getColumnIndex("symbol")) + "\",");
+                            initQueryCursor.getString(initQueryCursor.getColumnIndex(QuoteColumns.SYMBOL)) + "\",");
                     initQueryCursor.moveToNext();
                 }
                 mStoredSymbols.replace(mStoredSymbols.length() - 1, mStoredSymbols.length(), ")");
@@ -98,10 +99,10 @@ public class StockTaskService extends GcmTaskService {
                     e.printStackTrace();
                 }
             }
-        } else if (params.getTag().equals("add")) {
+        } else if (params.getTag().equals(AppConstants.INTENT_KEY_ADD)) {
             isUpdate = false;
             // get symbol from params.getExtra and build query
-            String stockInput = params.getExtras().getString("symbol");
+            String stockInput = params.getExtras().getString(AppConstants.INTENT_KEY_SYMBOL);
             try {
                 urlStringBuilder.append(URLEncoder.encode("\"" + stockInput + "\")", "UTF-8"));
             } catch (UnsupportedEncodingException e) {

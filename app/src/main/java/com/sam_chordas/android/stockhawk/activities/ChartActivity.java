@@ -88,7 +88,7 @@ public class ChartActivity extends AppCompatActivity implements LoaderManager.Lo
         float maxValue = 0;
 
         while (data.moveToNext()) {
-            String bidPrice = data.getString(data.getColumnIndex("bid_price"));
+            String bidPrice = data.getString(data.getColumnIndex(QuoteColumns.BIDPRICE));
             long time = data.getLong(data.getColumnIndex(QuoteColumns.CREATED));
             float bid = 0;
             try {

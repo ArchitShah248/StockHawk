@@ -15,6 +15,7 @@
     <string name="symbol_search">رمز البحث </string>
     <string name="content_desc_add_quote">أضف اقتباس </string>
     <string name="content_desc_quote">اقتبس : <xliff:g id="quote">%1$s</xliff:g> bid : <xliff:g id="quote">%2$s</xliff:g></string>
+    <string name="quote_exist">يتم حفظ هذه الأسهم بالفعل! </string>
 
 
 </resources>

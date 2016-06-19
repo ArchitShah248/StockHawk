@@ -5,14 +5,16 @@
               android:layout_height="32dp"
               android:gravity="center_vertical"
               android:orientation="horizontal"
+              android:paddingEnd="16dp"
               android:paddingLeft="16dp"
-              android:paddingRight="16dp">
+              android:paddingRight="16dp"
+              android:paddingStart="16dp">
 
     <TextView
         android:id="@+id/widget_stock_symbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
+        android:gravity="left|start|center_vertical"
         android:textSize="@dimen/widget_text_size"
         tools:text="GOOG"/>
 
@@ -20,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="right">
+        android:gravity="right|end">
 
         <TextView
             android:id="@+id/widget_bid_price"

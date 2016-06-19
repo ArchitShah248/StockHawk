@@ -28,6 +28,7 @@ import com.google.android.gms.gcm.PeriodicTask;
 import com.google.android.gms.gcm.Task;
 import com.melnykov.fab.FloatingActionButton;
 import com.sam_chordas.android.stockhawk.R;
+import com.sam_chordas.android.stockhawk.constants.AppConstants;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.adapters.QuoteCursorAdapter;
@@ -68,7 +69,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         mServiceIntent = new Intent(this, StockIntentService.class);
         if (savedInstanceState == null) {
             // Run the initialize task service so that some stocks appear upon an empty database
-            mServiceIntent.putExtra("tag", "init");
+            mServiceIntent.putExtra(AppConstants.INTENT_KEY_TAG, AppConstants.INTENT_KEY_INIT);
             if (Utils.isInternetAvailable(mContext)) {
                 startService(mServiceIntent);
             } else {
@@ -91,7 +92,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                         mCursor.moveToFirst();
                         boolean isSucceedded = mCursor.move(position);
                         if (isSucceedded) {
-                            String symbol = mCursor.getString(mCursor.getColumnIndex("symbol"));
+                            String symbol = mCursor.getString(mCursor.getColumnIndex(QuoteColumns.SYMBOL));
                             Uri uri = QuoteProvider.Quotes.withSymbol(symbol);
                             Log.i(TAG, "Selected URI: " + uri);
 
@@ -124,15 +125,15 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                                             new String[]{input.toString()}, null);
                                     if (c.getCount() != 0) {
                                         Toast toast =
-                                                Toast.makeText(MyStocksActivity.this, "This stock is already saved!",
+                                                Toast.makeText(MyStocksActivity.this, getString(R.string.quote_exist),
                                                         Toast.LENGTH_LONG);
                                         toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                                         toast.show();
                                         return;
                                     } else {
                                         // Add the stock to DB
-                                        mServiceIntent.putExtra("tag", "add");
-                                        mServiceIntent.putExtra("symbol", input.toString());
+                                        mServiceIntent.putExtra(AppConstants.INTENT_KEY_TAG, AppConstants.INTENT_KEY_ADD);
+                                        mServiceIntent.putExtra(AppConstants.INTENT_KEY_SYMBOL, input.toString());
                                         startService(mServiceIntent);
                                     }
                                 }
